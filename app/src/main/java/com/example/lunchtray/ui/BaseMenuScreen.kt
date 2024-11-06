@@ -54,7 +54,7 @@ fun BaseMenuScreen(
 
     Column(
         modifier = modifier
-            .verticalScroll(rememberScrollState())
+            // .verticalScroll(rememberScrollState())
     ) {
         options.forEach { item ->
             val onClick = {

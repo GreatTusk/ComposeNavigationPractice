@@ -83,7 +83,7 @@ fun LunchTrayApp(
                 title = {
                     Text(
                         text = stringResource(id = currentScreen.title),
-                        style = MaterialTheme.typography.headlineSmall
+                        // style = MaterialTheme.typography.headlineSmall
                     )
                 },
                 navigationIcon = {
@@ -96,7 +96,7 @@ fun LunchTrayApp(
                         }
                     }
                 },
-                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_small))
+                // modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_small))
             )
         }
     ) { innerPadding ->
@@ -168,7 +168,7 @@ fun LunchTrayApp(
             composable(route = LunchTrayScreen.Checkout.name) {
                 CheckoutScreen(
                     orderUiState = uiState,
-                    onNextButtonClicked = { /*TODO*/ },
+                    onNextButtonClicked = { cancelOrder(navHostController, viewModel) },
                     onCancelButtonClicked = {
                         cancelOrder(navHostController, viewModel)
                     },
