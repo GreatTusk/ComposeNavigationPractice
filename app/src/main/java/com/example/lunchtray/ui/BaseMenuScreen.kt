@@ -20,7 +20,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
@@ -50,7 +52,10 @@ fun BaseMenuScreen(
 
     var selectedItemName by rememberSaveable { mutableStateOf("") }
 
-    Column(modifier = modifier) {
+    Column(
+        modifier = modifier
+            .verticalScroll(rememberScrollState())
+    ) {
         options.forEach { item ->
             val onClick = {
                 selectedItemName = item.name
@@ -74,7 +79,9 @@ fun BaseMenuScreen(
                 // Assert not null bc next button is not enabled unless selectedItem is not null.
                 onNextButtonClicked()
             },
-            modifier = Modifier.fillMaxWidth().padding(dimensionResource(R.dimen.padding_medium))
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(R.dimen.padding_medium))
         )
     }
 }
@@ -127,7 +134,7 @@ fun MenuScreenButtonGroup(
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium))
-    ){
+    ) {
         OutlinedButton(modifier = Modifier.weight(1f), onClick = onCancelButtonClicked) {
             Text(stringResource(R.string.cancel).uppercase())
         }
